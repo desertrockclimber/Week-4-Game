@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type='text/css' href='assets/css/style.css'>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
  <title>The Crystal Game</title>
   
 
@@ -13,44 +13,47 @@
 
 
   <body>
-      <div class="jumbotron">
-      <h1>Number to Guess:<span id="number-to-guess"></span></h1>
+      <div class="jumbotron" style ="background-color: blue; color: white; width: 100%">
+      <h1 class ='text-center'>Number to Match:<span id="number-to-guess"></span></h1>
         
       </div>
-      <div class = 'score-count'>
-      <h2>Your Score:<span id ='score-count'></span></h2>
+        <div class="panel panel-primary" style="background-color: blue; color: white; font-size: 18px;"><strong>Instructions:<strong>  Try to match the random number generated in the "Number to Match" box by clicking on the gems below. By clicking on the right gems, your score should equal the random number. If you exceed the random number you lose. If you match the random number, you win.</div>
+
+      <div class = 'score-count' style = "color: red;">
+      <h2><strong>Your Score: <strong><span id ='score-count' class="text"></span></h2>
+      </div>
       <div class = 'container'>
          <div class="row">
           <div class="col-xs-6 col-md-3">
-              <img src="assets/images/redGem.JPG" alt="Red Gem" id='redGem'>
+              <img src="assets/images/redGem.JPG" alt="Red Gem" id="redGem">
             </a>
           </div>
           <div class="row">
           <div class="col-xs-6 col-md-3">
-              <img src="assets/images/blueGem.JPG" alt="Blue Gem" id= 'blueGem'>
+              <img src="assets/images/blueGem.JPG" alt="Blue Gem" id= "blueGem">
             </a>
           </div>
           <div class="row">
           <div class="col-xs-6 col-md-3">
-              <img src="assets/images/orangeGem.JPG" alt="Orange Gem" id='orangeGem'>
+              <img src="assets/images/orangeGem.JPG" alt="Orange Gem" id="orangeGem">
             </a>
           </div>
           <div class="row">
           <div class="col-xs-6 col-md-3">
-              <img src="assets/images/greenGem.JPG" alt="Green Gem" id='greenGem'>
+              <img src="assets/images/greenGem.JPG" alt="Green Gem" id="greenGem">
             </a>
           </div>
           </div>
 
           <ul class="list-group">
             <li class="list-group-item">
-              <span class="badge" id='wins'>14</span>
+              <span class="badge" id='wins'>0</span>
               Wins
             </li>
           </ul>
           <ul class="list-group">
             <li class="list-group-item">
-              <span class="badge" id='losses'>14</span>
+              <span class="badge" id='losses'>0</span>
               Losses
             </li>
           </ul>
@@ -58,7 +61,7 @@
 
 
       </div>
-    
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="assets/javascript/game.js"></script>
 
   </body>

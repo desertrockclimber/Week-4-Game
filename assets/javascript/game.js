@@ -1,100 +1,115 @@
-// alert("hi");
+// ===============================Global variables==============================
 
-
-// ===============================Global Variables==========================================
-
-
-var winCount = 0;
-var lossCount = 0;
-var userScore = 0;
-
-// ===================================Functions================================================
-
-// function startGame () {
-// ===============================Random Number to Guess ====================================
- 
-
-  var minNumber = 25;
-  var maxNumber = 75;
-
-  var randomNumber = randomNumberFromRange(minNumber, maxNumber);
-
-  function randomNumberFromRange(min,max)
+var crystal = {
+  blueGem: 
   {
-      return Math.floor(Math.random()*(max-min+1)+min);
+    name: "blueGem",
+    value: 0
+  },
+  greenGem:
+  {
+    name: "greenGem",
+    value: 0
+  },
+  redGem: 
+  {
+    name: "redGem",
+    value: 0
+  },
+  orangeGem:
+   {
+    name: "orangeGem",
+    value: 0
   }
+};
 
-  $("#number-to-guess").text(randomNumber);
-  console.log(randomNumber);
+// =====================================Scores========================================
+var currentScore  = 0;
+var targetScore  = 0;
 
+
+// =================================Wins and losses==============================
+
+var winCount  = 0;
+var lossCount = 0;
+
+// =================================Functions===================================
+
+var getRandom = function(min, max) {
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var startGame = function() {
+// Reset current score
+  currentScore = 0;
+
+  // set target score
+  targetScore = getRandom(19, 120);
+
+  crystal.redGem.value    = getRandom(1, 12);
+  crystal.blueGem.value     = getRandom(1, 12);
+  crystal.orangeGem.value   = getRandom(1, 12);
+  crystal.greenGem.value    = getRandom(1, 12);
+
+  $("#score-count").html(currentScore);
+  $("#number-to-guess").html(targetScore);
+
+
+
+  console.log("--------------------------------");
+  console.log('Target Score:' + targetScore);
+  console.log('Red:' + crystal.redGem.value + '| Blue:' + crystal.blueGem.value + '| Green:' + crystal.greenGem.value + '| Orange:' + crystal.orangeGem.value);
+  console.log('---------------------------------');
+
+}
+
+var addValues = function(crystal){
+
+  currentScore = currentScore + crystal.value;
+  console.log("your Score: " + currentScore);
   
+  checkWin();
 
-  // ===============================Score Counter==============================================
+  $("#score-count").html(currentScore);
+}
 
+var checkWin = function() {
+  if(currentScore > targetScore){
+    alert("Sorry, you lost");
+    lossCount++;
+    $("#losses").html(lossCount);
+    startGame();
 
+}
 
+  else if(currentScore == targetScore){
+    alert("You Won!")
+    winCount++;
+    $("#wins").html(winCount);
+    startGame();
 
-  // ===============================Random Gem Values==========================================
-   var minNumberGem = 1;
-   var maxNumberGem = 10;
-// --------------------------Red Gem------------------------------------
-  var randomNumberRed = randomNumberFromRange(minNumberGem, maxNumberGem);
-  var randomNumberBlue = randomNumberFromRange(minNumberGem, maxNumberGem);
-  var randomNumberGreen = randomNumberFromRange(minNumberGem, maxNumberGem);
-  var randomNumberOrange = randomNumberFromRange(minNumberGem, maxNumberGem);
+}
 
-function randomNumberFromRange(min,max) {
-       return Math.floor(Math.random()*(max-min+1)+min);
-   }
+}
 
-   $("#redGem").on('click', function() {
-      console.log(randomNumberRed);
+// ====================================Main Process================================
 
-  });
-   // Blue Gem --------------------------------------------------
-   function randomNumberFromRange(min,max) {
-       return Math.floor(Math.random()*(max-min+1)+min);
-   }
-   $("#blueGem").on('click', function() {
-      console.log(randomNumberBlue); 
-  });
-   //Green Gem -------------------------------------------------- 
-  function randomNumberFromRange(min,max) {
-       return Math.floor(Math.random()*(max-min+1)+min);
-   }
+startGame();
 
-  $("#greenGem").on('click', function() {
-      console.log(randomNumberGreen);
-  });
-// Orange Gem-----------------------------------------------------
-  function randomNumberFromRange(min,max) {
-       return Math.floor(Math.random()*(max-min+1)+min);
-   }
-  $("#orangeGem").on('click', function() {
-      console.log(randomNumberOrange);
+$("#redGem").click(function() {
+  addValues(crystal.redGem);
+});
 
-  });
+$("#blueGem").click(function() {
+  addValues(crystal.blueGem);
+});
 
- 
+$("#orangeGem").click(function() {
+  addValues(crystal.orangeGem);
+});
 
-// $(document).ready(function() {
-//         // When random-button is clicked...
-//       $("#redGem").on("click", function() {
-//         // ...create a string which will hold the lottery number.
-//         var randomGem = "";
-//         // Then create a loop that generates 9 separate numbers.
-//         for (var i = 0; i < 1; i++) {
-//           var random = Math.floor(Math.random() * 10);
-//           // Add to the lottery number.
-//           randomGem = random + randomGem;
-
-
-
-//         }
-//         // Then prepend the lotto number to the top of our random-number div.
-//         // $("#random-number").prepend("<br><hr>" + lottoNumber);
-//         console.log(randomGem);
-//       });
-//     });
-
+$("#greenGem").click(function() {
+  addValues(crystal.greenGem);
+});
 

@@ -19,5 +19,6 @@
 	font-size: 75px;
 	font-weight: bold;
 	margin-left: 50px;
-	color: blue;
+	color: white;
+	border: solid 3px;
 }
